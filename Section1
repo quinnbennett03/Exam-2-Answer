@@ -1,0 +1,52 @@
+class Text_operations:
+
+  def __init__(self, filename):
+    self.File = open(filename, 'r')
+
+  def findSubject(self):
+    count = 0
+    for line in self.File:
+      words = line.split()
+      for each in words:
+        if each == "Subject:": #word being searched for
+          count += 1
+    return count
+
+  def count5Words(self):
+    x=self.File.read()
+    words=x.split()
+    count={}
+    for word in words:
+      if word in count:
+        count[word] += 1
+      else:
+        count[word] = 1
+    topfive=[]
+    for i in range(5):
+      max=0
+      a=""
+      for word, count in count.items():
+        if count > max and word not in topfive:
+          max=count
+          a=word
+          topfive.append(items)
+    return topfive 
+
+  def isPalendrome(self):
+    topfive = self.solution_2()
+    for word in topfive:
+      for letter in word[::-1]:
+        Pal=letter
+      if Pal == word:
+        return("The following is a palindrome:" + word)
+      else:
+        return("The following is not a palidrome:" + word)
+      
+      
+    
+def main():
+  t = Text_operations("ComputerGraphicEmails.txt") #whatever text file you're using goes here
+  print(t.findSubject())
+  print(t.count5Words())
+  print(t.isPalendrome())
+main()
